@@ -121,7 +121,7 @@ function displayStats(currentEvents){
         if(least>attendance || least < 0){
             least = attendance;
         }
-        document.getElementById("statsHeader").innerHTML = `Stats For ${currentEvents[index].city}`;
+       
     }
     //average attendance
     average = total/currentEvents.length;
@@ -143,6 +143,8 @@ function getEvents(element){
 
     let city = element.getAttribute("data-string");
     
+    document.getElementById("statsHeader").innerHTML = `Stats For ${city} Events`;
+
     let currentEvents = getEventData();
 
     //filter array by city name
@@ -218,7 +220,7 @@ function saveEventData(){
     eventObj.attendance = attendance;
 
     let eventDate = document.getElementById("newEventDate").value;
-    let formattedEventDate = `${eventDate} 00.00`;
+    let formattedEventDate = `${eventDate} 00:00`;
     eventObj.date = new Date(formattedEventDate).toLocaleDateString();
 
     currentEvents.push(eventObj);
